@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>D U I I C ✦ Profile</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ Reset & Base ============ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Tajawal', 'Cairo', sans-serif;
+}
+
+:root {
+  --primary: #d9046a;
+  --primary-soft: #ff4d9d;
+  --accent: #7b2cbf;
+  --bg-dark: #0a0a0f;
+  --bg-card: rgba(20, 15, 25, 0.6);
+  --border: rgba(217, 4, 106, 0.25);
+  --text: #e8dde5;
+  --text-dim: #a89aa5;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg-dark);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 15px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ============ Animated Background ============ */
+.bg-blobs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.45;
+  animation: float 18s ease-in-out infinite;
+}
+.blob.b1 {
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, #d9046a, transparent 70%);
+  top: -100px; right: -100px;
+}
+.blob.b2 {
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, #7b2cbf, transparent 70%);
+  bottom: -120px; left: -100px;
+  animation-delay: -6s;
+}
+.blob.b3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, #ff4d9d, transparent 70%);
+  top: 40%; left: 45%;
+  animation-delay: -12s;
+  opacity: 0.25;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(40px,-30px) scale(1.1); }
+  66% { transform: translate(-30px,40px) scale(0.95); }
+}
+
+/* ============ Card ============ */
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 620px;
+  background: var(--bg-card);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 0 0 35px;
+  overflow: hidden;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.5),
+    0 0 40px rgba(217,4,106,0.08) inset;
+  animation: cardIn 1s ease;
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ Cover ============ */
+.cover {
+  position: relative;
+  height: 160px;
+  background:
+    linear-gradient(180deg, transparent 40%, rgba(10,10,15,0.9) 100%),
+    url('https://img.alfrsantv.com/img/f176636174587211.jpg') center/cover no-repeat;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(217,4,106,0.15), rgba(123,44,191,0.15));
+}
+
+/* ============ Avatar ============ */
+.avatar-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: -70px auto 0;
+  z-index: 2;
+}
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  box-shadow: 0 0 25px rgba(217,4,106,0.5);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(217,4,106,0.8);
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ============ Header / Name ============ */
+.header {
+  text-align: center;
+  padding: 18px 25px 0;
+}
+.name {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #fff, var(--primary-soft));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.name .verify {
+  font-size: 18px;
+  color: var(--primary);
+  -webkit-text-fill-color: var(--primary);
+}
+.tagline {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+.tagline i { color: var(--primary); margin-left: 6px; }
+
+/* ============ Divider ============ */
+.divider {
+  height: 1px;
+  margin: 22px 30px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* ============ Quotes ============ */
+.quotes {
+  margin: 0 25px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: rgba(217,4,106,0.06);
+  border: 1px solid var(--border);
+  text-align: center;
+  position: relative;
+}
+.quotes::before {
+  content: '\f10d';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  color: var(--primary);
+  background: #120a12;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+.quotes p {
+  font-size: 15.5px;
+  line-height: 2;
+  color: var(--text);
+}
+.quotes p + p { margin-top: 6px; }
+
+/* ============ Section Title ============ */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 28px 25px 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+.section-title i {
+  color: var(--primary);
+  font-size: 14px;
+  background: rgba(217,4,106,0.12);
+  width: 30px; height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+}
+.section-title span.line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+/* ============ Videos ============ */
+.videos-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 4px 25px 14px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
+}
+.videos-scroll::-webkit-scrollbar { height: 6px; }
+.videos-scroll::-webkit-scrollbar-track { background: transparent; }
+.videos-scroll::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+.video-box {
+  flex: 0 0 150px;
+  height: 250px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.video-box:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(217,4,106,0.35);
+}
+.video-box iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* ============ Social ============ */
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 25px 25px 0;
+  flex-wrap: wrap;
+}
+.social a {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  color: var(--text);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  font-size: 18px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.social a:hover {
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(217,4,106,0.45);
+  border-color: transparent;
+}
+
+/* ============ Footer ============ */
+.footer {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+.footer i { color: var(--primary); }
+
+/* ============ Responsive ============ */
+@media (max-width: 480px) {
+  body { padding: 15px 10px; }
+  .cover { height: 130px; }
+  .avatar-wrap { width: 115px; height: 115px; margin-top: -58px; }
+  .name { font-size: 22px; }
+  .quotes { margin: 0 15px; padding: 15px; }
+  .quotes p { font-size: 14px; }
+  .section-title, .social { margin-left: 15px; margin-right: 15px; }
+  .videos-scroll { padding-left: 15px; padding-right: 15px; }
+  .video-box { flex: 0 0 130px; height: 220px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ Animated Background ============ -->
+<div class="bg-blobs">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+</div>
+
+<!-- ============ Main Card ============ -->
+<main class="card">
+
+  <!-- Cover Image -->
+  <div class="cover"></div>
+
+  <!-- Avatar -->
+  <div class="avatar-wrap">
+    <div class="avatar">
+      <img src="https://img.alfrsantv.com/img/f176635888499821.png" alt="صورة البروفايل" />
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <h1 class="name">
+      ɖƲιιȻ
+      <i class="fas fa-circle-check verify" title="موثق"></i>
+    </h1>
+    <p class="tagline">
+      <i class="fas fa-crown"></i>
+      ستايلش الشات
+    </p>
+  </header>
+
+  <div class="divider"></div>
+
+  <!-- Quotes -->
+  <section class="quotes">
+    <p>أحبك فقط بسبب شخصيتك، وليس لما تمتلكه ♥️</p>
+    <p>أحبك لما تصنعه بي، ولما تضيفه لروحي وجودك</p>
+  </section>
+
+  <!-- Videos -->
+  <h2 class="section-title">
+    <i class="fas fa-play"></i>
+    فيديوهاتي
+    <span class="line"></span>
+  </h2>
+  <div class="videos-scroll">
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/1uMZhJeXLYw" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/HVgy8Ge0GJQ" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/mcp5fsJ8dw8" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <!-- Social -->
+  <h2 class="section-title">
+    <i class="fas fa-share-nodes"></i>
+    تابعني
+    <span class="line"></span>
+  </h2>
+  <div class="social">
+    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+    <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </div>
+
+  <!-- Footer -->
+  <p class="footer">
+    Designed with <i class="fas fa-heart"></i> for ɖƲιιȻ
+  </p>
+
+</main>
+
+</body>
+</html>
